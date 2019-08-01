@@ -42,9 +42,9 @@ def multi_field_sliders(fields, ul_class="", **kwargs):
         slider_id = "%s" % (field)
         slider_settings = "data-type='double' data-min='-100' data-max='100' data-from='-100' data-to='100' data-grid='true'"
         options = dict(kwargs, name=field, id=slider_id)
-        html.append("<li><div class='pl-4 pt-5 bd-highlight field-slider' id='slider'>")
+        html.append("<li><div class='pl-4 pt-5 bd-highlight field-slider' id='%s_container'>" % slider_id)
         html.append("<input %s class='js-range-slider' %s/> " % (html_params(**options), slider_settings))
-        html.append("<label for='%s'>%s</label></li>" % (slider_id, slider_id))
+        html.append("<label for='%s' class='slider-label'>%s</label></li>" % (slider_id, slider_id))
     html.append("</ul>")
     html.append("</div>")
     html.append("</div>")

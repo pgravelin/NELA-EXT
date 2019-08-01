@@ -34,7 +34,7 @@ def contact():
 def range_filter():
     data = request.form
     form = FieldSliders(list(data)[1:])
-    print(form.Sliders)
+    print(data)
 
     return render_template("range_filter.html", form=form)
 
