@@ -1,0 +1,46 @@
+body {
+    background: url('../background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.wrap {
+    height: auto;
+    margin: 110px auto 25px; /* footer height + space */
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.footer {
+    background-color: #111111;
+    color: #eeeeee;
+    position: absolute;
+    right: 0;
+    height: 75px;
+    bottom: -50px;
+    left: 0;
+    background-color: #efefef;
+    text-align: center;
+}
+
+nav {
+    position: fixed;
+    height: 80px;
+    font-size: 20px; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.nav a {
+   color: white !important;
+}
+
+.nav li {
+   padding-right:5px;
+}
+
+.field-slider {
+    display: block;
+    width: 250px;
+}
