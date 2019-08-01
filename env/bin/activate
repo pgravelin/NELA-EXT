@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/mnt/c/Dropbox/RPI/Research/Task 3/sideapp/env"
+VIRTUAL_ENV="/mnt/c/Projects/NELA/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

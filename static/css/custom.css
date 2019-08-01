@@ -36,9 +36,14 @@ nav {
    color: white !important;
 }
 
-.nav li {
-   padding-right:5px;
+.navbar-nav > li{
+    margin-left:15px;
+    margin-right:15px;
 }
+
+.navbar-collapse { 
+    background:#930000; /*replace with desired color*/ 
+} 
 
 .field-slider {
     display: block;
