@@ -11,13 +11,13 @@
                 {{ form.Sliders }}
             </div>
             <div class="input-group input-daterange">
-                <input type="text" class="form-control" value="2012-04-05" name="min_date">
+                <input type="text" class="form-control datepicker" value="2012-04-05" id="start_date" name="start_date">
                 <div class="input-group-addon">to</div>
-                <input type="text" class="form-control" value="2012-04-19" name="max_date">
+                <input type="text" class="form-control datepicker" value="2012-04-19" id="end_date" name="end_date">
             </div>
         </form>
         <div class="card-footer text-center">
-            <input type="submit" class="btn btn-primary" value="Filter" form="sliders_form">
+            <input type="submit" class="btn btn-primary" value="Filter" form="sliders_form" id="btn_submit">
         </div>
     </div>
 </div>
