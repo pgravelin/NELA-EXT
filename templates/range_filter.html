@@ -14,11 +14,7 @@
             <div id="sliders_row" class="pt-2" align="center">
                 {{ form.Sliders }}
             </div>
-            <div class="input-group input-daterange">
-                <input type="text" class="form-control datepicker" value="2012-04-05" id="start_date" name="start_date">
-                <div class="input-group-addon">to</div>
-                <input type="text" class="form-control datepicker" value="2012-04-19" id="end_date" name="end_date">
-            </div>
+            <input type="text" id="daterange" name="daterange" style="text-align: center;" value="01/01/2019 - 01/15/2019">
         </form>
         <div class="card-footer text-center">
             <input type="submit" class="btn btn-primary" value="Filter" form="sliders_form" id="btn_submit">

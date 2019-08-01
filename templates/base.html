@@ -13,8 +13,8 @@
     <link type="text/css" href="{{ url_for('static', filename='css/mdb.min.css') }}" rel="stylesheet">  
     <!-- Ion RangeSlider CSS -->
     <link type="text/css" href="{{ url_for('static', filename='css/ion.rangeSlider.min.css') }}" rel="stylesheet">  
-    <!-- Bootstrap Datepicker CSS -->
-    <link type="text/css" href="{{ url_for('static', filename='css/bootstrap-datepicker.min.css') }}" rel="stylesheet">  
+    <!-- DateRangePicker CSS -->
+    <link type="text/css" href="{{ url_for('static', filename='css/daterangepicker.css') }}" rel="stylesheet">  
     <!-- Custom CSS -->
     <link type="text/css" href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
 </head>
@@ -61,7 +61,6 @@
         <!-- Copyright -->
     </footer>
     <!-- FOOTER -->
-    
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
@@ -76,9 +75,11 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/ion.rangeSlider.min.js') }}"></script>
     <!-- Initialize Ion RangeSliders -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/initSliders.js') }}"></script>
-    <!-- Initialize Bootstrap Datepicker -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
-    <!-- Initialize DateRange JS -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/initDateRange.js') }}"></script>
+    <!-- DateRangePicker Dependency JS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/moment.min.js') }}"></script>
+    <!-- Initialize DateRanePicker -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/daterangepicker.js') }}"></script>
+    <!-- Initialize DateRangePicker JS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/initDateRangePicker.js') }}"></script>
 </body>
 </html>
