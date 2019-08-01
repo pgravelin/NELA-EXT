@@ -1,39 +1,37 @@
-$('.input-daterange input').each(function() {
-    $(this).datepicker('clearDates');
-    console.log("K");
+$(".input-daterange input").each(function() {
+    $(this).datepicker("clearDates");
 });
 
-$('.datepicker').each(function (){
+$(".datepicker").each(function (){
     $(this).datepicker({
         autoclose: true,
-        format: 'dd-mm-yyyy',
+        format: "dd-mm-yyyy",
         todayBtn: "linked"
     });
-    console.log("EEK");
 });
 
 var sDate,eDate;
-$("#start_date").datepicker().on('changeDate',function(e){
-    console.log("Start change")
-    sDate = new Date($(this).datepicker('getUTCDate'));
+$("#start_date").datepicker().on("changeDate",function(e){
+    sDate = new Date($(this).datepicker("getUTCDate"));
     checkDate();
 });
 
-$("#end_date").datepicker().on('changeDate',function(date){
-    console.log("end change")
-    eDate = new Date($(this).datepicker('getUTCDate'));
+$("#end_date").datepicker().on("changeDate",function(date){
+    eDate = new Date($(this).datepicker("getUTCDate"));
     checkDate();
 });
 
-function checkDate()
-{
-    if(sDate && eDate && (eDate<sDate))
-    {
-        
+function checkDate(){
+    if(sDate && eDate && (eDate<sDate)){
+        var alert = $('<div class="alert alert-fixed alert-warning alert-dismissable"' +
+            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' +
+            'Danger!!</div>');
+        alert.appendTo("#alerts");
+        alert.slideDown("slow");
+
         $("#btn_submit").attr("disabled", true);
     }
-    else
-    {
+    else{
         $("#btn_submit").attr("disabled", false);
     }
 }
