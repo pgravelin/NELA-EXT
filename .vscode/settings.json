@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "~/mnt/c/Projects/NELA/env/bin/python",
-    "python.linting.pep8Enabled": false,
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
-}
