@@ -33,10 +33,15 @@ def contact():
 @app.route("/range_filter", methods=["POST"])
 def range_filter():
     data = request.form
-    form = FieldSliders(list(data)[1:])
     print(data)
-
+    form = FieldSliders(list(data)[1:])
     return render_template("range_filter.html", form=form)
+
+@app.route("/data", methods=["POST"])
+def data():
+    data = request.form
+    print(data)
+    return render_template("data.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
