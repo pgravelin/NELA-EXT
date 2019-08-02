@@ -9,7 +9,6 @@ Flask application for the NELA Toolkit.
 
 * Install the following python packages using `pip install`:
     * flask
-    * flask-session
     * flask-wtf
     * flask-bootstrap
     * sqlalchemy

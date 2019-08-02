@@ -1,10 +1,4 @@
-""" Import dependencies:
-    - Flask framework API 
-    - SQLAlchemy DB helper functions
-    - psycopg2 PostgreSQL DB adapter """
-    
 from flask import Flask, render_template, json, jsonify, request, redirect, url_for, session
-from flask.ext.session import Session
 from flask_bootstrap import Bootstrap
 from database import db_session, POSTGRES, SQLALCHEMY_DATABASE_URI
 from models.models import Articles
@@ -14,9 +8,11 @@ import sqlalchemy
 
 # Initialize Flask
 app = Flask(__name__)
+
+app.config["SECRET_KEY"] = b"\xce\x8e\xc7\x8b\\\x1c\x07\xfa\xda\xe3\xa2\xcd\x05"
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+
 Bootstrap(app)
-app.secret_key = "Super Secret Key!"
-app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 
 @app.route("/")
 def homepage():
@@ -33,7 +29,6 @@ def contact():
 
 @app.route("/range_filter", methods=["POST"])
 def range_filter():
-    Session
     data = request.form
     print(data)
     form = FieldSliders(list(data)[1:])
