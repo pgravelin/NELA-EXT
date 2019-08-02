@@ -11,16 +11,19 @@ field_tuples = [(field_names[4], True)] + [(x, False) for x in field_names[5:-2]
 """ Multiple checkbox form for DB fields """
 
 def select_multi_checkbox(fields, ul_class="", **kwargs):
-    kwargs.setdefault("type", "checkbox")
-    html = ["<div class='fields-container' align='center' style='border:2px solid #ccc; width:300px; height: " \
+    kwargs.setdefault("type", "btn")
+    html = ["<div class='fields-container' align='left' style='border:2px solid #ccc; width:300px; height: " \
         "400px; overflow-y: scroll;'>"]
     html.append("<ul %s style='list-style-type: none;'>" % html_params(id="fields", class_=ul_class))
+    html.append("<div data-toggle='buttons'>")
     for label, checked in fields:
         field_id = "%s" % (label)
-        options = dict(kwargs, name=label, id=field_id, class_="btn btn-danger btn-block field-btn")
-        html.append("<li><button type='button' data-toggle='button' aria-pressed='false' autocomplete='off' %s>" \
-            "%s</button>" % (html_params(**options), field_id))
-        html.append("</li>")
+        options = dict(kwargs, name=label, id=field_id)
+        html.append("<li><label class='btn btn-secondary btn-block'>")
+        html.append("<input type='checkbox' autocomplete='off' class='invisible field-btn'" \
+            "%s>%s</label></li>" % 
+                    (html_params(**options), field_id))
+    html.append("</div>")
     html.append("</ul>")
     html.append("</div>")
     return "".join(html)
@@ -35,14 +38,16 @@ def multi_field_sliders(fields, ul_class="", **kwargs):
     kwargs.setdefault("type", "text")
     html = ["<div class='sliders-container' align='center' style='border:2px solid #ccc; width:350px; height: " \
         "400px; overflow-y: scroll;'>"]
-    html.append("<ul %s style='list-style-type: none;'>" % html_params(id="fields", class_=ul_class))
+    html.append("<ul %s style='list-style-type: none;'>" % (html_params(id="fields", class_=ul_class)))
     for field in fields:
         slider_id = "%s" % (field)
         slider_settings = "data-type='double' data-min='-100' data-max='100' data-from='-100' data-to='100' data-grid='true'"
         options = dict(kwargs, name=field, id=slider_id)
+        
         html.append("<li><div class='pl-4 pt-5 bd-highlight field-slider' id='%s_container'>" % slider_id)
         html.append("<input %s class='js-range-slider' %s/> " % (html_params(**options), slider_settings))
         html.append("<label for='%s' class='slider-label'>%s</label></div></li>" % (slider_id, slider_id))
+        
     html.append("</ul>")
     html.append("</div>")
     return "".join(html)

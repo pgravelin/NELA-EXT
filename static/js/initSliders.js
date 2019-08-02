@@ -1,1 +1,3 @@
-$(".js-range-slider").ionRangeSlider();
+$(".js-range-slider").ionRangeSlider({
+    skin: "sharp"
+});
