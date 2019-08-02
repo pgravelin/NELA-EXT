@@ -3,7 +3,8 @@
     - SQLAlchemy DB helper functions
     - psycopg2 PostgreSQL DB adapter """
     
-from flask import Flask, render_template, json, jsonify, request, redirect, url_for
+from flask import Flask, render_template, json, jsonify, request, redirect, url_for, session
+from flask.ext.session import Session
 from flask_bootstrap import Bootstrap
 from database import db_session, POSTGRES, SQLALCHEMY_DATABASE_URI
 from models.models import Articles
@@ -32,6 +33,7 @@ def contact():
 
 @app.route("/range_filter", methods=["POST"])
 def range_filter():
+    Session
     data = request.form
     print(data)
     form = FieldSliders(list(data)[1:])

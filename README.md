@@ -7,8 +7,9 @@ Flask application for the NELA Toolkit.
 * Ensure you have the latest version of pip or pip3 via:
     * `pip install --upgrade pip`
 
-* Install the following python packages using `pip install`
+* Install the following python packages using `pip install`:
     * flask
+    * flask-session
     * flask-wtf
     * flask-bootstrap
     * sqlalchemy
