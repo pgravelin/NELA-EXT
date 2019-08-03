@@ -20,12 +20,17 @@
 </head>
 
 <body>
+    <div class="alert alert-info fixed-top fade in show" id="bsalert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Info!</strong> This alert box could indicate a neutral informative or action
+    </div>
     <!-- NAVBAR -->
     <nav class="navbar fixed-top device-fixed-height pt-1 navbar-expand-lg navbar-dark" style="background-color:#930000;">
         <a class="navbar-brand" href="{{ url_for('homepage') }}">
             <img src="{{ url_for('static', filename='nela_logo.png') }}" alt="Logo">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" 
+            aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -48,7 +53,7 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="wrap">
         {% block content %} {% endblock %}
     </div>

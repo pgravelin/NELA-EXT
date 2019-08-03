@@ -5,7 +5,7 @@ from wtforms.widgets import ListWidget, CheckboxInput, html_params
 from wtforms.validators import Required
 from models.models import Articles
 
-field_names = Articles.__table__.columns.keys()
+field_names = sorted(Articles.__table__.columns.keys())
 field_tuples = [(field_names[4], True)] + [(x, False) for x in field_names[5:-2]]
 
 """ Multiple checkbox form for DB fields """
@@ -19,7 +19,7 @@ def select_multi_checkbox(fields, ul_class="", **kwargs):
     for label, checked in fields:
         field_id = "%s" % (label)
         options = dict(kwargs, name=label, id=field_id)
-        html.append("<li><label class='btn btn-secondary btn-block'>")
+        html.append("<li><label class='btn btn-danger btn-block'>")
         html.append("<input type='checkbox' autocomplete='off' class='invisible field-btn'" \
             "%s>%s</label></li>" % 
                     (html_params(**options), field_id))
@@ -37,7 +37,7 @@ class FieldSelection(FlaskForm):
 def multi_field_sliders(fields, ul_class="", **kwargs):
     kwargs.setdefault("type", "text")
     html = ["<div class='sliders-container' align='center' style='border:2px solid #ccc; width:350px; height: " \
-        "400px; overflow-y: scroll;'>"]
+        "375px; overflow-y: scroll;'>"]
     html.append("<ul %s style='list-style-type: none;'>" % (html_params(id="fields", class_=ul_class)))
     for field in fields:
         slider_id = "%s" % (field)
