@@ -23,9 +23,9 @@ app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 Bootstrap(app)
 
 @app.route("/")
-def homepage():
+def index():
     form = FieldSelection()
-    return render_template("home.html", form=form)
+    return render_template("index.html", form=form)
 
 @app.route("/about")
 def about():
