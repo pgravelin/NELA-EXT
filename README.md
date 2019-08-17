@@ -1,6 +1,6 @@
 # NELA
 
-Flask application for the NELA Toolkit.
+Flask application for an extension of the [NELA Toolkit](http://nelatoolkit.science/).
 
 ## Requirements
 
