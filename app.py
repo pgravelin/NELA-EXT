@@ -62,10 +62,12 @@ def data():
     # Query the POSTGRES database using dynamic SQL    
     cursor.execute("select * from Articles")
     
+    # Query by the relevant fields
     q = "SELECT "
     for field in fields:
         q += "%s, " % field
         
+    # Filter by user input field ranges
     q = q.strip().strip(",")
     q += " FROM articles WHERE "
     
@@ -74,14 +76,15 @@ def data():
             q += "CAST(%s AS float) >= %f and CAST(%s AS float) <= %f and " % (fields[i], converted_ranges[i][0], \
                     fields[i], converted_ranges[i][1])
     
+    # Filter by date range
     q += "title1_date >= '%s' and title1_date " \
          "<= '%s'" % (from_date, to_date)
     
-    print(q)
+    # Execute the query
     cursor.execute(q)
     
-    print(cursor.fetchall())
-    # print(cursor.fetchall())
+    # Fetch results
+    results = cursor.fetchall()
     
     return render_template("data.html")
 
