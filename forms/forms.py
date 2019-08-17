@@ -8,15 +8,18 @@ from models.models import Articles
 # Non-digit fields that should be hidden in the sliders form
 # We are still loading these into the form for indexing simplicity--possibly refactor?
 # >>> Also should be prioritized in the table display <<<
-text_fields = ["title1", "source1", "title1_date", "title2", "source2", "title2_date", \
-    "normal_display", "sources_display", "lower_display"]
+# text_fields = ["title1", "title2", "source1", "title1_date", "title2", "source2", "title2_date", \
+#     "normal_display", "sources_display", "lower_display"]
+
+text_fields = ["title1", "title2", "source1", "source2", "normal_display", "sources_display", \
+    "title1_date", "title2_date", "lower_display"]
 
 # Query attribute/field names from the database
 field_names = sorted([column.key for column in Articles.__table__.columns if not column.key in text_fields])
 field_names = text_fields + field_names
 
 # Required for checkbox initialization
-field_tuples = [(x, True) for x in field_names[0:8]] + [(x, False) for x in field_names[9:-1]]
+field_tuples = [(x, True) for x in field_names[4:9]] + [(x, False) for x in field_names[10:-1]]
 
 
 """ Multiple checkbox (buttons) form for DB fields """
@@ -78,16 +81,32 @@ def makeHTMLTable(fields, queryResults):
     
     # Table head
     html.append("<thead><tr>")
-    for field in fields:
-        html.append("<th scope=\"col\">%s</th>" % field)
-    html.append("</tr></thead>")
-    
+    i = 0
+    while i < len(fields):
+        if fields[i] == "title1_date" and i+1 < len(fields) and \
+             fields[i+1] == "title2_date":
+            html.append("<th scope=\"col\">Dates</th>")
+            i += 2
+        else:
+            html.append("<th scope=\"col\">%s</th>" % fields[i])
+            i += 1
+        
     # Table body
     html.append("<tbody>")
     for i in range(len(queryResults)):
         html.append("<tr>")
-        for j in range(len(fields)):
-            html.append("<td>%s</td>" % queryResults[i][j])
+        j = 0
+        while j < len(fields):
+            if fields[j] == "title1_date" and j+1 < len(fields) and \
+                 fields[j+1] == "title2_date":
+                html.append("<td>%s<br><br>%s</td>" % (queryResults[i][j], queryResults[i][j+1]))
+                j += 2  
+            elif fields[j] in text_fields:
+                html.append("<td>%s</td>" % queryResults[i][j])
+                j += 1
+            else:
+                html.append("<td>%s</td>" % queryResults[i][j])
+                j += 1
         html.append("</tr>")
             
     html.append("</tbody></table>")
