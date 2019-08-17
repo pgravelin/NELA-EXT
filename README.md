@@ -1,4 +1,4 @@
-# NELA
+# NELA-EXT
 
 Flask application for an extension of the [NELA Toolkit](http://nelatoolkit.science/).
 
