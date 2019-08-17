@@ -9,7 +9,7 @@ from sqlalchemy.orm import load_only
 from sqlalchemy import and_, or_
 from database import db_session, POSTGRES, SQLALCHEMY_DATABASE_URI, cursor
 from models.models import Articles
-from forms.forms import FieldSelection, FieldSliders
+from forms.forms import FieldSelection, FieldSliders, text_fields
 from datetime import date
 import psycopg2 as dbapi
 
@@ -52,11 +52,27 @@ def data():
     converted_ranges = []
     for r in ranges:
         converted_ranges.append(list(map(int, "-100;100".split(";"))))
-        
+    
+    # Query the POSTGRES database using dynamic SQL    
     cursor.execute("select * from Articles")
     
-    for row in cursor:
-        print(row[0], row[1], row[2], row[3])
+    q = "SELECT "
+    for field in fields:
+        q += "%s, " % field
+        
+    q = q.strip().strip(",")
+    q += " FROM articles WHERE "
+    
+    for i in range(len(fields)):
+        if not fields[i] in text_fields:
+            q += "%s >= %f and %s <= %f" % (fields[i], converted_ranges[i][0], \
+                    fields[i], converted_ranges[i][1])
+        q += "and "
+        
+    q = q.strip().strip("and ")
+    print(q)
+    print(to_date)
+    print(from_date)
     
     # print(cursor.fetchall())
     
