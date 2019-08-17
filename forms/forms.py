@@ -8,9 +8,6 @@ from models.models import Articles
 # Non-digit fields that should be hidden in the sliders form
 # We are still loading these into the form for indexing simplicity--possibly refactor?
 # >>> Also should be prioritized in the table display <<<
-# text_fields = ["title1", "title2", "source1", "title1_date", "title2", "source2", "title2_date", \
-#     "normal_display", "sources_display", "lower_display"]
-
 text_fields = ["title1", "title2", "source1", "source2", "normal_display", "sources_display", \
     "title1_date", "title2_date", "lower_display"]
 
