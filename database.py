@@ -20,6 +20,7 @@ db_session = scoped_session(sessionmaker(autocommit=False,
                                          bind=engine))
 Base = declarative_base()
 Base.query = db_session.query_property()
+cursor = db_session.connection().connection.cursor()
 
 def init_db():
     # import all modules here that might define models so that

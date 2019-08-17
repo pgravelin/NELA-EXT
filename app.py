@@ -7,7 +7,7 @@ from flask import Flask, render_template, json, jsonify, request, redirect, url_
 from flask_bootstrap import Bootstrap
 from sqlalchemy.orm import load_only
 from sqlalchemy import and_, or_
-from database import db_session, POSTGRES, SQLALCHEMY_DATABASE_URI
+from database import db_session, POSTGRES, SQLALCHEMY_DATABASE_URI, cursor
 from models.models import Articles
 from forms.forms import FieldSelection, FieldSliders
 from datetime import date
@@ -49,13 +49,17 @@ def data():
     fields, ranges = zip(*(data[:-1]))
     from_date, to_date = data[-1][1].split(" - ")
 
-    articles = db_session.query(Articles).options(load_only(*fields)) \
-        .filter(or_(and_(from_date <= Articles.title1_date,Articles.title1_date <= to_date), \
-            and_(from_date <= Articles.title2_date,Articles.title2_date <= to_date))).all()
+    converted_ranges = []
+    for r in ranges:
+        converted_ranges.append(list(map(int, "-100;100".split(";"))))
         
-    for article in articles:
-        print(article.__dict__)
-        
+    cursor.execute("select * from Articles")
+    
+    for row in cursor:
+        print(row[0], row[1], row[2], row[3])
+    
+    # print(cursor.fetchall())
+    
     return render_template("data.html")
 
 if __name__ == "__main__":
