@@ -1,2 +1,2 @@
 # TODO
-* Render DB query in a table
+* Implement as a single page application
