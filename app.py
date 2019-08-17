@@ -9,7 +9,7 @@ from sqlalchemy.orm import load_only
 from sqlalchemy import and_, or_
 from database import db_session, POSTGRES, SQLALCHEMY_DATABASE_URI, cursor
 from models.models import Articles
-from forms.forms import FieldSelection, FieldSliders, text_fields
+from forms.forms import FieldSelection, FieldSliders, text_fields, makeHTMLTable
 from datetime import date, datetime
 import psycopg2 as dbapi
 
@@ -49,16 +49,15 @@ def data():
     fields, ranges = zip(*(data[:-1]))
     from_date, to_date = data[-1][1].split(" - ")
 
+    # Convert dates from the daterange plugin's format to Year-Month-Day
     from_date = datetime.strptime(from_date, '%m/%d/%Y').strftime("%Y-%m-%d")
     to_date = datetime.strptime(to_date, '%m/%d/%Y').strftime("%Y-%m-%d")
 
-    print(from_date)
-    print(to_date)
-
+    # Convert ranges from semicolon delimited strings to lists
     converted_ranges = []
     for r in ranges:
-        converted_ranges.append(list(map(int, r.split(";"))))
-    
+        converted_ranges.append(tuple(map(int, r.split(";"))))
+
     # Query the POSTGRES database using dynamic SQL    
     cursor.execute("select * from Articles")
     
@@ -73,7 +72,8 @@ def data():
     
     for i in range(len(fields)):
         if not fields[i] in text_fields:
-            q += "CAST(%s AS float) >= %f and CAST(%s AS float) <= %f and " % (fields[i], converted_ranges[i][0], \
+            q += "CAST(%s AS float) >= %f and CAST(%s AS float) <= %f and " % \
+                 (fields[i], converted_ranges[i][0], \
                     fields[i], converted_ranges[i][1])
     
     # Filter by date range
@@ -83,10 +83,16 @@ def data():
     # Execute the query
     cursor.execute(q)
     
-    # Fetch results
+    # Fetch all results of the query
     results = cursor.fetchall()
     
-    return render_template("data.html")
+    # Make a dynamic HTML table to display the selected fields
+    table = makeHTMLTable(fields, results)  
+    
+    print(fields)
+    print(results)
+    
+    return render_template("data.html", table=table)
 
 if __name__ == "__main__":
     app.run(debug=True)

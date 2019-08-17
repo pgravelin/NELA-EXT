@@ -21,7 +21,7 @@ field_tuples = [(field_names[4], True)] + [(x, False) for x in field_names[5:-2]
 text_fields = ["normal_display", "lower_display", "sources_display", "title1_date", \
     "title2_date", "title1", "title2", "source1", "source2"]
 
-""" Multiple checkbox form for DB fields """
+""" Multiple checkbox (buttons) form for DB fields """
 
 def select_multi_checkbox(fields, ul_class="", **kwargs):
     kwargs.setdefault("type", "btn")
@@ -32,7 +32,7 @@ def select_multi_checkbox(fields, ul_class="", **kwargs):
     for label, checked in fields:
         field_id = "%s" % (label)
         options = dict(kwargs, name=label, id=field_id)
-        html.append("<li><label class='btn btn-danger btn-block'>")
+        html.append("<li><label class='btn btn-light btn-block'>")
         html.append("<input type='checkbox' autocomplete='off' class='invisible field-btn'" \
             "%s>%s</label></li>" % 
                     (html_params(**options), field_id))
@@ -46,6 +46,7 @@ class FieldSelection(FlaskForm):
 
 
 """ Multiple slider form for DB field filtering """
+""" Sliders are initialized in initSliders.js   """
 
 def multi_field_sliders(fields, ul_class="", **kwargs):
     kwargs.setdefault("type", "text")
@@ -69,3 +70,14 @@ class FieldSliders(FlaskForm):
 
     def __init__(self, fields):
         self.Sliders = Markup(multi_field_sliders (fields=fields) )
+        
+def makeHTMLTable(fields, queryResults):
+    html = ["<table id=\"data\" class=\"table table-striped table-bordered table-sm\" " \
+         "style=\"background-color: white\" cellspacing=\"0\" width=\"100%\">"]
+    html.append("<thead><tr>")
+    for field in fields:
+        html.append("<th scope=\"col\">%s</th>" % field)
+    html.append("</tr></thead>")
+    
+    html.append("</table></div></div>")
+    return Markup("".join(html))
