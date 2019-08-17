@@ -76,3 +76,7 @@ nav {
     z-index:9999; 
     border-radius:0px
 }
+
+.table-nonfluid {
+    width: auto !important;
+ }

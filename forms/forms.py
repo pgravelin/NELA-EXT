@@ -72,12 +72,22 @@ class FieldSliders(FlaskForm):
         self.Sliders = Markup(multi_field_sliders (fields=fields) )
         
 def makeHTMLTable(fields, queryResults):
-    html = ["<table id=\"data\" class=\"table table-striped table-bordered table-sm\" " \
-         "style=\"background-color: white\" cellspacing=\"0\" width=\"100%\">"]
+    html = ["<table id=\"data\" class=\"table table-striped table-bordered\" " \
+         "style=\"background-color: white;\" cellspacing=\"0\">"]
+    
+    # Table head
     html.append("<thead><tr>")
     for field in fields:
         html.append("<th scope=\"col\">%s</th>" % field)
     html.append("</tr></thead>")
     
-    html.append("</table></div></div>")
+    # Table body
+    html.append("<tbody>")
+    for i in range(len(queryResults)):
+        html.append("<tr>")
+        for j in range(len(fields)):
+            html.append("<td>%s</td>" % queryResults[i][j])
+        html.append("</tr>")
+            
+    html.append("</tbody></table>")
     return Markup("".join(html))
