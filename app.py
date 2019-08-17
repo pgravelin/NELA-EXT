@@ -89,9 +89,6 @@ def data():
     # Make a dynamic HTML table to display the selected fields
     table = makeHTMLTable(fields, results)  
     
-    print(fields)
-    print(results)
-    
     return render_template("data.html", table=table)
 
 if __name__ == "__main__":
