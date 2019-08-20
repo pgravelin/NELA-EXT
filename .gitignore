@@ -1,0 +1,8 @@
+# python compiled code
+*.pyc
+
+# environment specific
+.vs
+.vscode
+env
+venv

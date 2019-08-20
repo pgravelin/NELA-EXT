@@ -1,0 +1,82 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    overflow-y: scroll;
+}
+
+body {
+    background: url('../background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    /* Margin bottom by footer height */
+    margin-bottom: 50px;
+}
+
+.wrap {
+    padding-top: 110px;
+    padding-bottom: 20px;
+}
+
+.footer {
+    background-color: #111111;
+    color: #eeeeee;
+    position: absolute;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 50px;
+}
+
+nav {
+    position: fixed;
+    height: 80px;
+    font-size: 20px; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.nav a {
+   color: white !important;
+}
+
+.navbar-nav > li{
+    margin-left:15px;
+    margin-right:15px;
+}
+
+.navbar-collapse { 
+    background:#930000; /*replace with desired color*/ 
+} 
+
+.field-slider {
+    display: block;
+    width: 250px;
+}
+
+.slider-label {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: .85em;
+}
+
+.alert-fixed {
+    position:fixed; 
+    margin-top: 80px;
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border-radius:0px
+}
+
+.table-nonfluid {
+    width: auto !important;
+ }
