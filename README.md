@@ -13,6 +13,8 @@ Flask application for an extension of the [NELA Toolkit](http://nelatoolkit.scie
     * flask-bootstrap
     * sqlalchemy
     * psycopg2
+    
+ * Modify database.py and run the postgres server
 
 * Run the flask app using either:
     * `python app.py`
