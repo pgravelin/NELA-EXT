@@ -7,14 +7,9 @@ Flask application for an extension of the [NELA Toolkit](http://nelatoolkit.scie
 * Ensure you have the latest version of pip or pip3 via:
     * `pip install --upgrade pip`
 
-* Install the following python packages using `pip install`:
-    * flask
-    * flask-wtf
-    * flask-bootstrap
-    * sqlalchemy
-    * psycopg2
+* Run `pip install -r requirements.txt`
     
- * Modify database.py and run the postgres server
+* Modify database.py and run the postgres server
 
 * Run the flask app using either:
     * `python app.py`
